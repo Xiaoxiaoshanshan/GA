@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Oeuvre index{% endblock %}
+
+{% block body %}
+    <h1>Oeuvre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Img</th>
+                <th>Description</th>           
+                <th>Longueur</th>
+                <th>Largeur</th>
+                <th>Hauteur</th>
+                <th>Diametre</th>
+                <th>Periodcreation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for oeuvre in oeuvres %}
+            <tr>
+                <td>{{ oeuvre.id }}</td>
+                <td>{{ oeuvre.titre }}</td>
+                <td>{{ oeuvre.img }}</td>
+                <td>{{ oeuvre.description }}</td>         
+                <td>{{ oeuvre.longueur }}</td>
+                <td>{{ oeuvre.largeur }}</td>
+                <td>{{ oeuvre.hauteur }}</td>
+                <td>{{ oeuvre.diametre }}</td>
+                <td>{{ oeuvre.periodcreation }}</td>
+                <td>
+                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}">show</a>
+                    <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('oeuvre_new') }}">Create new</a>
+{% endblock %}
