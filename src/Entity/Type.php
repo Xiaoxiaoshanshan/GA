@@ -21,17 +21,7 @@ class Type
     /**
      * @ORM\Column(type="text")
      */
-    private $libellefr;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $libelleen;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $libellecn;
+    private $libelle;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Oeuvre", mappedBy="type")
@@ -48,38 +38,14 @@ class Type
         return $this->id;
     }
 
-    public function getLibellefr(): ?string
+    public function getLibelle(): ?string
     {
-        return $this->libellefr;
+        return $this->libelle;
     }
 
-    public function setLibellefr(string $libellefr): self
+    public function setLibelle(string $libelle): self
     {
-        $this->libellefr = $libellefr;
-
-        return $this;
-    }
-
-    public function getLibelleen(): ?string
-    {
-        return $this->libelleen;
-    }
-
-    public function setLibelleen(string $libelleen): self
-    {
-        $this->libelleen = $libelleen;
-
-        return $this;
-    }
-
-    public function getLibellecn(): ?string
-    {
-        return $this->libellecn;
-    }
-
-    public function setLibellecn(string $libellecn): self
-    {
-        $this->libellecn = $libellecn;
+        $this->libelle = $libelle;
 
         return $this;
     }
@@ -98,7 +64,6 @@ class Type
             $this->oeuvres[] = $oeuvre;
             $oeuvre->setType($this);
         }
-
         return $this;
     }
 

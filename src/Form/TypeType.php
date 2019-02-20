@@ -12,9 +12,7 @@ class TypeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libellefr')
-            ->add('libelleen')
-            ->add('libellecn')
+            ->add('libelle')            
         ;
     }
 
