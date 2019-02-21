@@ -26,7 +26,7 @@ class Oeuvre
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\File(mimeTypes = {"audio/mpeg"})
+     * @Assert\File(mimeTypes = {"image/jpeg"})
      */
     private $img;
 

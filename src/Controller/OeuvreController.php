@@ -38,7 +38,7 @@ class OeuvreController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $oeuvre->setPath($fileUploader->upload($form['path']->getData()));
+            $oeuvre->setImg($fileUploader->upload($form['img']->getData()));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($oeuvre);

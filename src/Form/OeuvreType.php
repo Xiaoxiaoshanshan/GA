@@ -23,7 +23,7 @@ class OeuvreType extends AbstractType
             ->add('hauteur')
             ->add('diametre')
             ->add('periodcreation')
-            ->add('artistes')
+            /*->add('artistes')*/
             /*->add('expositions')*/
             ->add('type',EntityType::class,[
                 'class' => Type::class,
@@ -37,7 +37,7 @@ class OeuvreType extends AbstractType
                 'expanded'=> true,
                 'multiple' => false
             ])
-            ->add('position')
+            /*->add('position')*/
         ;
     }
 
