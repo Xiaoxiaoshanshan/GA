@@ -16,12 +16,12 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_USER', 'ROLE_ADMIN','ROLE_SUPER_ADMIN']);
         $user->setpassword('$argon2i$v=19$m=1024,t=2,p=2$c3F5SGE5SzN3cTlEZ3RMUQ$HuHsWUxWvRX3ce7wPSn3baYw9bqMOaY9qnvD/CwQPW0');
         $user->setpseudo('xiaoshanman');
-        $user->setnom('shanman');
-        $user->setprenom('WANG');
+        $user->setnom('WANG');
+        $user->setprenom('shanman');
         $user->settel('0000000000');
         $user->setadresse(' 3 rue enfer');
         $user->setcp('41000');
-        $user->setville('blois');
+        $user->setville('Blois');
 
         $faker = Faker\Factory::create('fr_FR');
 
@@ -32,8 +32,8 @@ class UserFixtures extends Fixture
             $user1->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
             $user1->setpassword('$argon2i$v=19$m=1024,t=2,p=2$c3F5SGE5SzN3cTlEZ3RMUQ$HuHsWUxWvRX3ce7wPSn3baYw9bqMOaY9qnvD/CwQPW0');
             $user1->setpseudo($faker->userName);
-            $user1->setnom($faker->name);
-            $user1->setprenom($faker->lastName);
+            $user1->setnom($faker->lastName);
+            $user1->setprenom($faker->firstName);
             $user1->settel($faker->phoneNumber);
             $user1->setadresse($faker->address);
             $user1->setcp($faker->postCode);
