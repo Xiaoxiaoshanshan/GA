@@ -9,25 +9,23 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nomartiste</th>
-                <th>Prenomartiste</th>
+                <th>Nom</th>
+                <th>Prenom</th>
                 <th>Pays</th>
-                <th>Descriptionartistefr</th>
-                <th>Descriptionartisteen</th>
-                <th>Descriptionartistecn</th>
+                <th>Descriptionartiste</th>             
                 <th>actions</th>
             </tr>
         </thead>
+        
         <tbody>
         {% for artiste in artistes %}
             <tr>
                 <td>{{ artiste.id }}</td>
-                <td>{{ artiste.nomartiste }}</td>
-                <td>{{ artiste.prenomartiste }}</td>
+                <td>{{ artiste.nom }}</td>
+                <td>{{ artiste.prenom}}</td>
                 <td>{{ artiste.pays }}</td>
-                <td>{{ artiste.descriptionartistefr }}</td>
-                <td>{{ artiste.descriptionartisteen }}</td>
-                <td>{{ artiste.descriptionartistecn }}</td>
+                <td>{{ artiste.description}}</td>
+                
                 <td>
                     <a href="{{ path('artiste_show', {'id': artiste.id}) }}">show</a>
                     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>

@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @Route("/exposition")
@@ -28,13 +31,15 @@ class ExpositionController extends AbstractController
     /**
      * @Route("/new", name="exposition_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $exposition = new Exposition();
         $form = $this->createForm(ExpositionType::class, $exposition);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $exposition->setPoster($fileUploader->upload($form['poster']->getData()));
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($exposition);
             $entityManager->flush();
@@ -61,8 +66,12 @@ class ExpositionController extends AbstractController
     /**
      * @Route("/{id}/edit", name="exposition_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Exposition $exposition): Response
+    public function edit(Request $request, Exposition $exposition, FileUploader $fileUploader): Response
     {
+        $exposition->setPoster(
+            new File($this->getParameter('img_directory') . '/' . $exposition->getPoster())
+        );
+
         $form = $this->createForm(ExpositionType::class, $exposition);
         $form->handleRequest($request);
 
