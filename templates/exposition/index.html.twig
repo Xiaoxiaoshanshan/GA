@@ -1,64 +1,53 @@
 {% extends 'base.html.twig' %}
-{% block body %}
 
-   <div>
-    <nav id="navbar" class="navbar navbar-expand-lg bg-dark px-5">
-        <a class="navbar-brand text-white" href="#"><h1>Grand Angle</h1></a>
-        
-        <button class="navbar-toggler navbar-dark" type="button" 
-        data-toggle="collapse" 
-        data-target="#humberger" 
-        >
+{% block body %}  
+
+ <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D2ACA5">
+        <div class="container">
+            <img src="/assets/img/logo.png">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="humberger">
-                <ul class="navbar-nav ml-auto pr-3">
-                        <li class="nav-item">
-                                <a class="nav-link" href="" target="_blank">info</a>
-                        </li>
-                        
-                        <li class="nav-item"> 
-                                <a class="nav-link" href="#">accueil</a>
-                        </li>
-
-                        <li class="nav-item"> 
-                                <a class="nav-link" href="#">à propos</a>
-                        </li>                                   
-                </ul>               
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">                  
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/"><i class="fas fa-home pr-1"></i>Accueil</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/propos"><i class="fas fa-book-open pr-1"></i> A propos</a>
+                    </li>                               
+                </ul>
+            </div>
         </div>
-</nav>
-   </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Poster</th>
-                <th>Titreexpo</th>
-                <th>Descriptionexpofr</th>
-                <th>Descriptionexpoen</th>
-                <th>Descriptionexpocn</th>
-                <th>Datedebut</th>
-                <th>Datefin</th>
-                <th>Nbvisiters</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    </nav>
+
+ <!-- table -->
+ <table class="table">
+  <thead>         
+    <tr>                
+        {#<th>Poster</th>#}
+        <th>Titre</th>
+        {#<th>Description</th> #}              
+        <th>Datedebut</th>
+        <th>Datefin</th>
+        {#<th>Nbvisiters</th> #}
+        <th>action</th>                               
+    </tr>
+  </thead>
+
+  <tbody>
         {% for exposition in expositions %}
             <tr>
-                <td>{{ exposition.id }}</td>
-                <td>{{ exposition.poster }}</td>
-                <td>{{ exposition.titreexpo }}</td>
-                <td>{{ exposition.descriptionexpofr }}</td>
-                <td>{{ exposition.descriptionexpoen }}</td>
-                <td>{{ exposition.descriptionexpocn }}</td>
+                {#<td>{{ exposition.poster }}</td>#}
+                <td>{{ exposition.titre }}</td>
+                {#<td>{{ exposition.description }}</td> #}              
                 <td>{{ exposition.datedebut ? exposition.datedebut|date('Y-m-d') : '' }}</td>
                 <td>{{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</td>
-                <td>{{ exposition.nbvisiters }}</td>
+                {#<td>{{ exposition.nbvisiters }}</td>#}
                 <td>
-                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}">show</a>
-                    <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
+                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}">DESCRIPTION</a>
+                    {#<a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>#}
                 </td>
             </tr>
         {% else %}
@@ -66,10 +55,27 @@
                 <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+{#*************************************************************************************************#}
+    
+    <table class="table">
+        <thead>
+           
+        </thead>
+
+        <tbody>
+        
+       
         </tbody>
     </table>
 
-    <a href="{{ path('exposition_new') }}">Create new</a>
+    {#<a href="{{ path('exposition_new') }}">Create new</a>#}
+    {% include ('partials/footer.html.twig') %} 
 {% endblock %}
 
 

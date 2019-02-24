@@ -3,52 +3,61 @@
 {% block title %}Exposition{% endblock %}
 
 {% block body %}
-    <h1>Exposition</h1>
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D2ACA5">
+        <div class="container">
+            <img src="/assets/img/logo.png">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">                  
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/"><i class="fas fa-home pr-1"></i>Accueil</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/propos"><i class="fas fa-book-open pr-1"></i> A propos</a>
+                    </li>                               
+                    <li class="nav-item">
+                        <a href="{{ path('exposition_index') }}" class="btn btn-outline-dark my-auto">back to list</a>
+                    </li>                               
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ exposition.id }}</td>
-            </tr>
-            <tr>
-                <th>Poster</th>
-                <td>{{ exposition.poster }}</td>
-            </tr>
-            <tr>
-                <th>Titreexpo</th>
-                <td>{{ exposition.titreexpo }}</td>
-            </tr>
-            <tr>
-                <th>Descriptionexpofr</th>
-                <td>{{ exposition.descriptionexpofr }}</td>
-            </tr>
-            <tr>
-                <th>Descriptionexpoen</th>
-                <td>{{ exposition.descriptionexpoen }}</td>
-            </tr>
-            <tr>
-                <th>Descriptionexpocn</th>
-                <td>{{ exposition.descriptionexpocn }}</td>
-            </tr>
-            <tr>
-                <th>Datedebut</th>
-                <td>{{ exposition.datedebut ? exposition.datedebut|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Datefin</th>
-                <td>{{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Nbvisiters</th>
-                <td>{{ exposition.nbvisiters }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Content -->
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <div class="media py-4 px-5">
+                <img class="align-self-top mr-3 img-fluid" width="400px" src="/uploads/img/{{ exposition.poster}}"  alt="imageexpo">                 
+                <div class="media-body">
+                    <h3 class="mt-0">{{ exposition.titre}}</h3>
+                    <p>{{ exposition.description }}</p>
+                    <p class="mb-0">DATE : {{ exposition.datedebut ? exposition.datedebut|date('Y-m-d') : '' }}---{{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</p>
+                    {#<button type="button" class="btn btn-primary mt-3">
+                                NBvisits <span class="badge badge-light">9</span>                        
+                    </button>  #} 
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('exposition_index') }}">back to list</a>
+    <div class="row justify-content-center">
 
-    <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
+        <h1>coucoucocucou</h1>
+        
+        {% for o in exposition.Oeuvres %}
+            <div>
+                <h3>{{ o.titre }}</h3>
+                <img class="align-self-top mr-3" width="200px" src="/uploads/img/{{ o.img }}" alt=""> 
+            </div>
+        {% endfor %} 
 
-    {{ include('exposition/_delete_form.html.twig') }}
+    </div>
+
+    {#<a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>#}
+
+    {#{{ include('exposition/_delete_form.html.twig') }}#}
+     {% include ('partials/footer.html.twig') %} 
 {% endblock %}
