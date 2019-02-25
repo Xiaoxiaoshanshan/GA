@@ -1,20 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminHomeController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+        
+    {% include ('partials/navbar.html.twig') %} 
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div id="bgimg">       
+        
+        <center>
+            <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="2100">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/GA/src/Controller/AdminHomeController.php'|file_link(0) }}">src/Controller/AdminHomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/GA/templates/admin_home/index.html.twig'|file_link(0) }}">templates/admin_home/index.html.twig</a></code></li>
-    </ul>
-</div>
+                <!-- Carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="imgcar" src="/assets/img/car1.jpg" alt="Los Angeles">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="imgcar" src="/assets/img/car2.jpg" alt="Chicago">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="imgcar" src="/assets/img/car3.jpg" alt="New York">
+                    </div>
+                </div>
+            </div>
+        </center>
+       
+         <!-- contenu -->
+        <div class="row text-center px-5">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="/assets/img/exp.jpg" alt="">
+                    <div class="card-body">
+                        <h3 id="exsh" class="card-title"><a href="/exposition"><i class="far fa-hand-point-right"></i> EXPOSITIONS <i class="far fa-hand-point-left"></i></a></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="card ">
+                    <img class="card-img-top" src="/assets/img/oeuvres.jpg" alt="">
+                    <div class="card-body">
+                        <h3 id="oesh" class="card-title"><a href="/oeuvre"><i class="far fa-hand-point-right"></i> OEUVRES <i class="far fa-hand-point-left"></i></a></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="card ">
+                    <img class="card-img-top" src="/assets/img/artiste.jpg" alt="">
+                    <div class="card-body">
+                        <h3 id="artsh" class="card-title"><a href="/artiste"><i class="far fa-hand-point-right"></i> ARTISTES <i class="far fa-hand-point-left"></i></a></h3>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <!-- fin contenu -->  
+
+        {% include ('partials/footer.html.twig') %} 
 {% endblock %}
