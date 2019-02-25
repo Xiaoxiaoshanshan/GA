@@ -63,7 +63,7 @@ class Exposition
         return $this->id;
     }
 
-    public function getPoster(): ?string
+    public function getPoster()
     {
         return $this->poster;
     }

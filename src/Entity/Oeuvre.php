@@ -122,7 +122,7 @@ class Oeuvre
         return $this->img;
     }
 
-    public function setImg(string $img): self
+    public function setImg($img)
     {
         $this->img = $img;
 

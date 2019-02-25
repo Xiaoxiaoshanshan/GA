@@ -68,19 +68,26 @@ class OeuvreController extends AbstractController
      */
     public function edit(Request $request, Oeuvre $oeuvre, FileUploader $fileUploader): Response
     {
-        $oeuvre->setPath(
-            new File($this->getParameter('img_directory') . '/' . $oeuvre->getPath())
+        $current_img = $oeuvre->getImg();
+        $oeuvre->setImg(
+            new File($this->getParameter('img_directory') . '/' . $oeuvre->getImg())
         );
-
-        $form = $this->createForm(Oeuvre1Type::class, $oeuvre);
+       
+        $form = $this->createForm(OeuvreType::class, $oeuvre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            if (is_null($oeuvre->getImg())) {
+                $oeuvre->setImg($current_img);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('oeuvre_index', [
                 'id' => $oeuvre->getId(),
             ]);
+
         }
 
         return $this->render('oeuvre/edit.html.twig', [

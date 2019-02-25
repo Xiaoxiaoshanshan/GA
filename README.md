@@ -25,6 +25,10 @@ php bin/console make:user
   [0] Empty authenticator
   [1] Login form authenticator
 
+  // upload
+
+  entity enlever type string
+
 
 // make fixtures + faker
 
