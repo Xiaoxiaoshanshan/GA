@@ -39,9 +39,12 @@
                               <button type="button" name="button" class="btn login_btn">Connexion</button>
                           </div>#}
                         <input type="submit" class="btn login_btn" value="Log In" >
+                      
 
                          <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}">
+                            <br>
+                         <center><button class="btn btn-info"><a class="nav-link text-dark" href="/"><i class="fas fa-arrow-circle-left"></i> Retour acceuil</a></button></center>
                     </form>
                 </div>           
               
