@@ -14,12 +14,20 @@ class PositionFixtures extends Fixture
         
         $faker = Faker\Factory::create('fr_FR');
 
-        for($i=0;$i<6;$i++) {
+        for($i=1;$i<3;$i++) {
             
             $position = new Position();
-            $position->setlibelleposition($faker->randomLetter);            
+            $position->setlibelleposition('A'.$i);            
             $manager->persist($position);
         }
+
+        for($j=1;$j<3;$j++) {
+            
+            $position = new Position();
+            $position->setlibelleposition('B'.$j);            
+            $manager->persist($position);
+        }       
+
         $manager->flush();
     }
 }

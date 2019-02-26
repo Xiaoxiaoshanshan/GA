@@ -38,6 +38,7 @@ class ExpositionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $exposition->setPoster($fileUploader->upload($form['poster']->getData()));
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -68,6 +69,8 @@ class ExpositionController extends AbstractController
      */
     public function edit(Request $request, Exposition $exposition, FileUploader $fileUploader): Response
     {
+        $current_poster = $exposition->getPoster();
+
         $exposition->setPoster(
             new File($this->getParameter('img_directory') . '/' . $exposition->getPoster())
         );
@@ -76,6 +79,11 @@ class ExpositionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if (is_null($exposition->getPoster())) {
+                $exposition->setPoster($current_poster);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('exposition_index', [

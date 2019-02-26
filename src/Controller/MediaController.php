@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/media")
+ * 
+ * 
  */
 class MediaController extends AbstractController
 {

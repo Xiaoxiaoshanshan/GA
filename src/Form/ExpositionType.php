@@ -16,7 +16,9 @@ class ExpositionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('poster', FileType::class)
+            ->add('poster', FileType::class, [
+                'required' => false
+            ])
             ->add('titre')
             ->add('description')           
             ->add('datedebut')
@@ -26,7 +28,7 @@ class ExpositionType extends AbstractType
                 'class' => Oeuvre::class,
                 'choice_label' => 'titre',
                 'expanded'=> false,
-                'multiple' => true
+                'multiple' => false
             ])
         ;
     }
