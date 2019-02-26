@@ -27,8 +27,8 @@ class ExpositionType extends AbstractType
             ->add('oeuvres',EntityType::class,[
                 'class' => Oeuvre::class,
                 'choice_label' => 'titre',
-                'expanded'=> false,
-                'multiple' => false
+                'expanded'=> true,
+                'multiple' => true
             ])
         ;
     }

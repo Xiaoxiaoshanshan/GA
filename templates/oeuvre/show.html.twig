@@ -4,6 +4,8 @@
 
 {% block body %}
     <h1>Oeuvre</h1>
+    <input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
     <table class="table">
         <tbody>
             <tr>
@@ -16,8 +18,7 @@
             </tr>
             <tr>
                 <th>Img</th>
-                <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>               
-                <td><img  src="{{ oeuvre.img }}" alt=""></td>                
+                <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>                            
             </tr>
             <tr>
                 <th>Description</th>
