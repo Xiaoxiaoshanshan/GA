@@ -46,7 +46,9 @@
                 {#<td>{{ exposition.nbvisiters }}</td>#}
                 <td>
                     <a href="{{ path('exposition_show', {'id': exposition.id}) }}">DESCRIPTION</a>
-                    {#<a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>#}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
+    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -58,7 +60,7 @@
 </table>
 
 
-
+ 
 
 {#*************************************************************************************************#}
     
@@ -73,8 +75,18 @@
         </tbody>
     </table>
 
-    {#<a href="{{ path('exposition_new') }}">Create new</a>#}
+    
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+ <a href="{{ path('exposition_new') }}">Create new</a>
+       
+         {% endif %}
+
+    
+
     {% include ('partials/footer.html.twig') %} 
+
+
+
 {% endblock %}
 
 

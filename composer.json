@@ -11,7 +11,7 @@
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/expression-language": "4.2.*",
-        "symfony/flex": "^1.1",
+        "symfony/flex": "^1.2",
         "symfony/form": "4.2.*",
         "symfony/framework-bundle": "4.2.*",
         "symfony/monolog-bundle": "^3.1",
@@ -25,7 +25,8 @@
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
         "symfony/webpack-encore-bundle": "^1.1",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "weglot/translate-bundle": "^0.7.2"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",

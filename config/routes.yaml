@@ -4,3 +4,13 @@
 
 app_logout:
     path: /logout
+
+contact:
+    path:       /{_locale}/
+
+index:
+    path: /{_locale}/
+    controller: App\Controller\HomeController::getIndex
+    defaults:   {_locale: fr}
+    requirements:
+        _locale: en|fr|cn|

@@ -1,5 +1,8 @@
-<form method="post" action="{{ path('exposition_delete', {'id': exposition.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <form method="post" action="{{ path('exposition_delete', {'id': exposition.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ exposition.id) }}">
     <button class="btn">Delete</button>
 </form>
+         {% endif %}

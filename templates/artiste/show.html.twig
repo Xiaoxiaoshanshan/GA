@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ artiste.id }}</td>
-            </tr>
-            <tr>
                 <th>Nomartiste</th>
                 <td>{{ artiste.nom }}</td>
             </tr>
@@ -33,7 +29,14 @@
 
     <a href="{{ path('artiste_index') }}">back to list</a>
 
-    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+
+         
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+       
+         {% endif %}
+
+ 
 
     {{ include('artiste/_delete_form.html.twig') }}
 {% endblock %}

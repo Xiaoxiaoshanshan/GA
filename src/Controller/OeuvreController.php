@@ -65,9 +65,11 @@ class OeuvreController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="oeuvre_edit", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Oeuvre $oeuvre, FileUploader $fileUploader): Response
-    {
+    {  
+        
         $current_img = $oeuvre->getImg();
         $oeuvre->setImg(
             new File($this->getParameter('img_directory') . '/' . $oeuvre->getImg())
@@ -98,9 +100,11 @@ class OeuvreController extends AbstractController
 
     /**
      * @Route("/{id}", name="oeuvre_delete", methods={"DELETE"})
+        * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Oeuvre $oeuvre): Response
-    {
+    { 
+       
         if ($this->isCsrfTokenValid('delete'.$oeuvre->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($oeuvre);

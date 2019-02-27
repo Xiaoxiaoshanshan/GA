@@ -3,16 +3,33 @@
 {% block title %}Artiste index{% endblock %}
 
 {% block body %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D2ACA5">
+        <div class="container">
+            <img src="/assets/img/logo.png">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">                  
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/"><i class="fas fa-home pr-1"></i>Accueil</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/propos"><i class="fas fa-book-open pr-1"></i> A propos</a>
+                    </li>                               
+                </ul>
+            </div>
+        </div>
+    </nav>
     <h1>Artiste index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Pays</th>
-                <th>Descriptionartiste</th>             
+                <th>Pays</th>           
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,15 +37,16 @@
         <tbody>
         {% for artiste in artistes %}
             <tr>
-                <td>{{ artiste.id }}</td>
                 <td>{{ artiste.nom }}</td>
                 <td>{{ artiste.prenom}}</td>
                 <td>{{ artiste.pays }}</td>
-                <td>{{ artiste.description}}</td>
                 
                 <td>
                     <a href="{{ path('artiste_show', {'id': artiste.id}) }}">show</a>
-                    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+       
+         {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,6 +56,15 @@
         {% endfor %}
         </tbody>
     </table>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<a href="{{ path('artiste_new') }}">Create new</a>
+       
+         {% endif %}
+    
 
-    <a href="{{ path('artiste_new') }}">Create new</a>
+
+    {% include ('partials/footer.html.twig') %} 
 {% endblock %}
+
+
+

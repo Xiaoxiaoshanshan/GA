@@ -3,38 +3,49 @@
 {% block title %}Oeuvre index{% endblock %}
 
 {% block body %}
+ <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D2ACA5">
+        <div class="container">
+            <img src="/assets/img/logo.png">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">                  
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/"><i class="fas fa-home pr-1"></i>Accueil</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/propos"><i class="fas fa-book-open pr-1"></i> A propos</a>
+                    </li>                               
+                </ul>
+            </div>
+        </div>
+    </nav>
     <h1>Oeuvre index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Img</th>
-                <th>Description</th>           
-                <th>Longueur</th>
-                <th>Largeur</th>
-                <th>Hauteur</th>
-                <th>Diametre</th>
-                <th>Periodcreation</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for oeuvre in oeuvres %}
             <tr>
-                <td>{{ oeuvre.id }}</td>
+        
                 <td>{{ oeuvre.titre }}</td>
-                <td><img  src="{{ oeuvre.img }}" alt=""></td>
-                <td>{{ oeuvre.description }}</td>         
-                <td>{{ oeuvre.longueur }}</td>
-                <td>{{ oeuvre.largeur }}</td>
-                <td>{{ oeuvre.hauteur }}</td>
-                <td>{{ oeuvre.diametre }}</td>
-                <td>{{ oeuvre.periodcreation }}</td>
+                <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>    
                 <td>
                     <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}">show</a>
-                    <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">edit</a>
+                    
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">edit</a>
+    {% endif %}
+
+
                 </td>
             </tr>
         {% else %}
@@ -45,5 +56,15 @@
         </tbody>
     </table>
 
-    <a href="{{ path('oeuvre_new') }}">Create new</a>
+     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     <a href="{{ path('oeuvre_new') }}">Create new</a>
+    {% endif %}
+
+
+
+
+ {% include ('partials/footer.html.twig') %} 
+
+
 {% endblock %}
+

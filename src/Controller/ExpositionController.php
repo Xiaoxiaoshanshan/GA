@@ -66,6 +66,7 @@ class ExpositionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="exposition_edit", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Exposition $exposition, FileUploader $fileUploader): Response
     {
@@ -99,6 +100,7 @@ class ExpositionController extends AbstractController
 
     /**
      * @Route("/{id}", name="exposition_delete", methods={"DELETE"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Exposition $exposition): Response
     {
