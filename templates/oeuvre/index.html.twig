@@ -28,8 +28,8 @@
         <thead>
             <tr>
                 <th>Titre</th>
-                <th>Img</th>
-                <th>actions</th>
+                <th>Oeuvres</th>
+                <th>En savoir plus</th>
             </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
                 <td>{{ oeuvre.titre }}</td>
                 <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>    
                 <td>
-                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}">show</a>
+                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
                     
   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
      <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">edit</a>

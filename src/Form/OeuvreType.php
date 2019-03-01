@@ -19,7 +19,7 @@ class OeuvreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
+            ->add('titre', TextType::class)
             ->add('img', FileType::class, [
                 'required' => false
             ])

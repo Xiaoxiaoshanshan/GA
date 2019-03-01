@@ -29,12 +29,17 @@
     <!-- Content -->
     <div class="row justify-content-center">
         <div class="col-7">
-            <div class="media py-4 px-5">
-                <img class="align-self-top mr-3 img-fluid" width="400px" src="/uploads/img/{{ exposition.poster}}"  alt="imageexpo">                 
+               
+            <div class="media py-3 px-3">
+    
+                <img class="align-self-top mr-2 img-fluid" width="400px" src="/uploads/img/{{ exposition.poster}}"  alt="imageexpo">                 
+                
                 <div class="media-body">
                     <h3 class="mt-0">{{ exposition.titre}}</h3>
+                    
                     <p>{{ exposition.description }}</p>
-                    <p class="mb-0">DATE : {{ exposition.datedebut ? exposition.datedebut|date('Y-m-d') : '' }}---{{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</p>
+                    <p class="text-center py-1" class="mb-0">EXPOSITION DU : {{ exposition.datedebut ? exposition.datedebut|date('d-m-Y') : '' }} AU {{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</p>
+        
                     {#<button type="button" class="btn btn-primary mt-3">
                                 NBvisits <span class="badge badge-light">9</span>                        
                     </button>  #} 
@@ -44,7 +49,6 @@
     </div>
     <div class="row justify-content-center">
 
-        <h1>{coucoucocucou}</h1>
         
         {% for o in exposition.Oeuvres %}
             <div>

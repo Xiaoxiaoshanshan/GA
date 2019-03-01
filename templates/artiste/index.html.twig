@@ -30,7 +30,7 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Pays</th>           
-                <th>actions</th>
+                <th>En savoir plus</th>
             </tr>
         </thead>
         
@@ -42,7 +42,7 @@
                 <td>{{ artiste.pays }}</td>
                 
                 <td>
-                    <a href="{{ path('artiste_show', {'id': artiste.id}) }}">show</a>
+                    <a href="{{ path('artiste_show', {'id': artiste.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
      <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
        

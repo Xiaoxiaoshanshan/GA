@@ -24,15 +24,18 @@
 
  <!-- table -->
  <table class="table bg-white">
-  <thead>         
+  <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+    <thead>         
     <tr>                
         {#<th>Poster</th>#}
         <th>Titre</th>
         {#<th>Description</th> #}              
-        <th>Datedebut</th>
-        <th>Datefin</th>
+        <th>Début</th>
+        <th>Fin</th>
         {#<th>Nbvisiters</th> #}
-        <th>action</th>                               
+        <th>En savoir plus</th>                               
     </tr>
   </thead>
   <tbody>
@@ -41,11 +44,11 @@
                 {#<td>{{ exposition.poster }}</td>#}
                 <td>{{ exposition.titre }}</td>
                 {#<td>{{ exposition.description }}</td> #}              
-                <td>{{ exposition.datedebut ? exposition.datedebut|date('Y-m-d') : '' }}</td>
-                <td>{{ exposition.datefin ? exposition.datefin|date('Y-m-d') : '' }}</td>
+                <td>{{ exposition.datedebut ? exposition.datedebut|date('d-m-Y') : '' }}</td>
+                <td>{{ exposition.datefin ? exposition.datefin|date('d-m-Y') : '' }}</td>
                 {#<td>{{ exposition.nbvisiters }}</td>#}
                 <td>
-                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}">DESCRIPTION</a>
+                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
      <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
     {% endif %}
@@ -57,6 +60,11 @@
             </tr>
         {% endfor %}
   </tbody>
+</div>
+</div>
+</div>
+
+
 </table>
 
 
