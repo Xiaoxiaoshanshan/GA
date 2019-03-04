@@ -21,10 +21,10 @@
                 <td>{{ oeuvre.titre }}</td>
                 <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>    
                 <td>
-                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
+                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}" class="btn btn-primary">Voir</a>
                     
   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}">edit</a>
+     <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}" class="btn btn-primary ml-2">Editer</a>
     {% endif %}
 
 
@@ -39,7 +39,7 @@
     </table>
 
      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('oeuvre_new') }}">Create new</a>
+     <a href="{{ path('oeuvre_new') }}" class="btn btn-primary">Create new</a>
     {% endif %}
 
  {% include ('partials/footer.html.twig') %} 

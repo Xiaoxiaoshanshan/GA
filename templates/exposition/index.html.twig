@@ -30,13 +30,15 @@
                 <td>{{ exposition.datefin ? exposition.datefin|date('d-m-Y') : '' }}</td>
                 {#<td>{{ exposition.nbvisiters }}</td>#}
                 <td>
-                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
+                    <a href="{{ path('exposition_show', {'id': exposition.id}) }}" class="btn btn-primary">Voir</a>
+
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
-    {% endif %}
+                        <a href="{{ path('exposition_edit', {'id': exposition.id}) }}" class="btn btn-primary">Editer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
+        
             <tr>
                 <td colspan="10">no records found</td>
             </tr>
