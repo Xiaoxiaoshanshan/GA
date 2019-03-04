@@ -1,12 +1,6 @@
 {{ form_start(form) }}
-    {#{{ form_widget(form) }}#}
-    <div class="form-group">
-            <div class="col-md">
-                {{ form_row(form.titre) }}
-            </div>
-            <small id="name" class="form-text text-muted">
-                    {{ form_errors(form) }}
-            </small>
-        </div>
+    {{ form_widget(form) }}
+    
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
