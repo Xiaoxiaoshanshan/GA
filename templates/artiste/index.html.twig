@@ -26,7 +26,7 @@
                 <td>
                     <a href="{{ path('artiste_show', {'id': artiste.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}" class="btn btn-primary ml-2">Editer</a>
        
          {% endif %}
                 </td>

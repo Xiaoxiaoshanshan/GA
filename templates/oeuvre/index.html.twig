@@ -4,43 +4,40 @@
 
 {% block body %}
 {% include ('partials/visitnavbar.html.twig') %} 
-    <h1>Oeuvre index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Oeuvres</th>
-                <th>En savoir plus</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for oeuvre in oeuvres %}
-            <tr>
-        
-                <td>{{ oeuvre.titre }}</td>
-                <td><img width="100px" src="/uploads/img/{{ oeuvre.img }}" alt=""></td>    
-                <td>
-                    <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}" class="btn btn-primary">Voir</a>
-                    
-  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}" class="btn btn-primary ml-2">Editer</a>
-    {% endif %}
 
 
-                </td>
-            </tr>
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<a href="{{ path('oeuvre_new') }}" class="btn btn-primary">Create new</a>
+{% endif %}
+
+<div class="container-fluid justify-content-center">
+    <div class="row mt-3 justify-content-center">
+            {% for oeuvre in oeuvres %}
+        <div class="col-lg-2">
+                <div class="card mb-3 ">                        
+                        <img style="height: 200px; width: 100%; display: block;" src="/uploads/img/{{ oeuvre.img }}" alt="Card image" class="img-fluid">                   
+                      
+                    <div class="card-body">  
+                        <p class="card-text text-white">{{ oeuvre.titre }}</p>                        
+                        <a href="{{ path('oeuvre_show', {'id': oeuvre.id}) }}" class="card-link">En savoir plus</a>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('oeuvre_edit', {'id': oeuvre.id}) }}" class="card-link">Editer</a>
+                        {% endif %}
+                    </div>     
+                </div>                    
+        </div>
         {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
+        <tr>
+            <td colspan="12">no records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
+</div>
 
-     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('oeuvre_new') }}" class="btn btn-primary">Create new</a>
-    {% endif %}
+
+
+
 
  {% include ('partials/footer.html.twig') %} 
 
