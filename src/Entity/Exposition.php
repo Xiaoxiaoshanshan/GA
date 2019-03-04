@@ -49,7 +49,7 @@ class Exposition
     private $nbvisiters;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Oeuvre", mappedBy="expositions")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Oeuvre", mappedBy="exposions")
      */
     private $oeuvres;
 
@@ -147,7 +147,7 @@ class Exposition
     {
         if (!$this->oeuvres->contains($oeuvre)) {
             $this->oeuvres[] = $oeuvre;
-            $oeuvre->addExposition($this);
+            $oeuvre->addExposion($this);
         }
 
         return $this;
@@ -157,7 +157,7 @@ class Exposition
     {
         if ($this->oeuvres->contains($oeuvre)) {
             $this->oeuvres->removeElement($oeuvre);
-            $oeuvre->removeExposition($this);
+            $oeuvre->removeExposion($this);
         }
 
         return $this;

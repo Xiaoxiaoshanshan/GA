@@ -38,7 +38,7 @@ class ExpositionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $exposition->setPoster($fileUploader->upload($form['poster']->getData()));
 
             $entityManager = $this->getDoctrine()->getManager();

@@ -61,13 +61,6 @@ class Oeuvre
      */
     private $periodcreation;
 
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Exposition", inversedBy="oeuvres")
-     */
-    private $expositions;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="oeuvres")
      */
@@ -93,11 +86,17 @@ class Oeuvre
      */
     private $artistes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Exposition", inversedBy="oeuvres")
+     */
+    private $exposions;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
         $this->expositions = new ArrayCollection();
         $this->media = new ArrayCollection();
+        $this->exposions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,33 +200,6 @@ class Oeuvre
         return $this;
     }
 
-
-    /**
-     * @return Collection|Exposition[]
-     */
-    public function getExpositions(): Collection
-    {
-        return $this->expositions;
-    }
-
-    public function addExposition(Exposition $exposition): self
-    {
-        if (!$this->expositions->contains($exposition)) {
-            $this->expositions[] = $exposition;
-        }
-
-        return $this;
-    }
-
-    public function removeExposition(Exposition $exposition): self
-    {
-        if ($this->expositions->contains($exposition)) {
-            $this->expositions->removeElement($exposition);
-        }
-
-        return $this;
-    }
-
     public function getType(): ?Type
     {
         return $this->type;
@@ -317,6 +289,32 @@ class Oeuvre
         if ($this->artistes->contains($artiste)) {
             $this->artistes->removeElement($artiste);
             $artiste->removeOeuvre($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exposition[]
+     */
+    public function getExposions(): Collection
+    {
+        return $this->exposions;
+    }
+
+    public function addExposion(Exposition $exposion): self
+    {
+        if (!$this->exposions->contains($exposion)) {
+            $this->exposions[] = $exposion;
+        }
+
+        return $this;
+    }
+
+    public function removeExposion(Exposition $exposion): self
+    {
+        if ($this->exposions->contains($exposion)) {
+            $this->exposions->removeElement($exposion);
         }
 
         return $this;
