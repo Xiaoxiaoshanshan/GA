@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container-fluid justify-content-center">
         <div class="row">
         {{ form_start(form) }}
@@ -7,3 +8,11 @@
         </div>
         </div>
         
+=======
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    
+
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+>>>>>>> fabcd69694c551dd15d0cb49ccd5b6d377345831
