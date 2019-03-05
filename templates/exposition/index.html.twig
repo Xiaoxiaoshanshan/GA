@@ -32,6 +32,7 @@
         {#<th>Poster</th>#}
         <th>Titre</th>
         {#<th>Description</th> #}              
+        <th>Expositon</th>
         <th>Début</th>
         <th>Fin</th>
         {#<th>Nbvisiters</th> #}
@@ -43,14 +44,15 @@
             <tr>
                 {#<td>{{ exposition.poster }}</td>#}
                 <td>{{ exposition.titre }}</td>
-                {#<td>{{ exposition.description }}</td> #}              
+                {#<td>{{ exposition.description }}</td> #} 
+                <td><img width="100px" src="/uploads/img/{{ exposition.poster }}" alt=""></td>               
                 <td>{{ exposition.datedebut ? exposition.datedebut|date('d-m-Y') : '' }}</td>
                 <td>{{ exposition.datefin ? exposition.datefin|date('d-m-Y') : '' }}</td>
                 {#<td>{{ exposition.nbvisiters }}</td>#}
                 <td>
                     <a href="{{ path('exposition_show', {'id': exposition.id}) }}"><button type="button" class="btn btn-primary">Voir</button></a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-     <a href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
+     <a class="btn btn-secondary" href="{{ path('exposition_edit', {'id': exposition.id}) }}">edit</a>
     {% endif %}
                 </td>
             </tr>
